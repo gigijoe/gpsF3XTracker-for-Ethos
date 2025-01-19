@@ -43,21 +43,9 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 Unzip the installation package and place all files into directory /SCRIPTS on your transmitter. Folders gpstraca (keeping setup part) and gpstrack (keeping operation part) should not be changed. Please note all modules, excluding locations.lua, are in the compiled form (*.luac).
 Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "GPS F3X Tracker" when a target model is selected. The application is capable to modify size of text to size of widget windows, however, for accommodation of all information properly it is recommended to use half screen for the setup widget and whole screen for main widget:
 
-<<img width="400" alt="image" src="https://github.com/user-attachments/assets/b51639a8-a0b6-4f8f-8c04-0a33e132f7bb" />
->
-<<img width="398" alt="image" src="https://github.com/user-attachments/assets/459e9b80-937d-4d22-af5f-fd390c1269c2" />
->
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/64ebaf36-a21f-4c63-962b-e63933f32665" />
 
-
-
-
-
-
-
-
-
-
-
+<img width="398" alt="image" src="https://github.com/user-attachments/assets/02e3870f-98cc-4512-a125-16e9df2353d4" />
 
 <a name="Configuration"></a>
 ## 5. Configuration
@@ -77,31 +65,14 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 
 	(**) This item is available only for F3F event types, for F3B event types is Base A always on left
 
-<picture 3>
-
-
-
-
-
-
-
-
+<img width="393" alt="image" src="https://github.com/user-attachments/assets/a477bf41-c2ab-4e79-9695-c02d4b6663c3" />
 
 - "GPS F3X Tracker" widget configuration:
 	- Start race switch: any 2-position switch or functional switch, mandatory
 	- Elevator output channel: mandatory only for FrSky GPS, used for simulation of accelerometer
 	- Input debug GPS latitude and longitude: used for emulation of GPS input in debug mode  (suggested analog sources elevator and rudder), not mandatory
 
-<picture 4>
-
-
-
-
-
-
-
-
-
+<img width="395" alt="image" src="https://github.com/user-attachments/assets/0afcba7a-6224-4a54-b183-ccbd8a749ae4" />
 
 <a name="Locations.lua"></a>
 ## 6. Locations.lua
@@ -143,14 +114,9 @@ The actual status is indicated by individual rows in the "GPS F3X Tracker" widge
 - Course: "center", "leftOutside", "leftInside", "rightOutside", "rightInside" - distance from the center is provided
 - V, Dst, H: speed, distance from the center and height
 - GPS: actual GPS position
-- Runs: list of events of the same type with their runtime
+- Runs: list of last events of the same type with their runtime
 
-<picture 5>
-
-
-
-
-
+<img width="346" alt="image" src="https://github.com/user-attachments/assets/b5b4293e-1c30-43bd-8200-6f2051d68252" />
 
 Announcements and sounds: 
 - Beep after switching the "Start race switch" on
@@ -185,13 +151,7 @@ Announcements and sounds:
 - Go to the "GPS F3X Tracker" widget screen
 	- The initial status is indicated by statement "waiting for start..." 
 
-<picture 6>
-
-
-
-
-
-
+<img width="329" alt="image" src="https://github.com/user-attachments/assets/659d80f2-1ac1-4279-b225-70fb40e7d9e5" />
 
 - Start new event with the "Start race switch"
 
