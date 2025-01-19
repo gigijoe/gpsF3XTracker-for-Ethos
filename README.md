@@ -61,15 +61,15 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 ## 5. Configuration
 - GPS sensor: set data rate to 10Hz = 0.1s (or higher if possible). Crosscheck names of available GPS sensors and rename, if needed. The application expects these sensors:
 	- SM-Modelbau GPS-Logger 3: "GAlt", "GPS", "GSpd", "Date", "GSats", "AccX", "AccY", "AccZ"
- - FrSky GPS ADV:  "GPS Alt", "GPS", "GPS Speed", "GPS Clock"
- - Other GPS: "GAlt", "GPS", "GSpd", "Date", "AccX", "AccY", "AccZ"
+	- FrSky GPS ADV:  "GPS Alt", "GPS", "GPS Speed", "GPS Clock"
+	- Other GPS: "GAlt", "GPS", "GSpd", "Date", "AccX", "AccY", "AccZ"
 
-    b)  GPS F3X Tracker Setup  widget configuration:
-        1. Event place: any item from list of places in locations.lua file
-        2. Course direction: course bearing from the left base to the right base in degrees*
-        3. Competition type: any type from supported types (f3f_training, f3f_competition, f3b_distance, f3b_speed, f3f_debug)*
-        4. Base A is on left: set  true  if it is so (default status)**
-        5. Lock GPS Home position switch: any 2-position switch or functional switch, mandatory
+- GPS F3X Tracker Setup  widget configuration:
+        - Event place: any item from list of places in locations.lua file
+        - Course direction: course bearing from the left base to the right base in degrees*
+        - Competition type: any type from supported types (f3f_training, f3f_competition, f3b_distance, f3b_speed, f3f_debug)*
+        - Base A is on left: set  true  if it is so (default status)**
+        - Lock GPS Home position switch: any 2-position switch or functional switch, mandatory
 	* These items are available only for  Live Position & Direction event , otherwise are locked as they are determined by event information from locations.lua file
 	** This item is available only for F3F event types, for F3B event types is Base A always on left
 
@@ -83,10 +83,10 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 
 
 
-    c) "GPS F3X Tracker" widget configuration:
-        1. Start race switch: any 2-position switch or functional switch, mandatory
-        2. Elevator output channel: mandatory only for FrSky GPS, used for simulation of accelerometer
-        3. Input debug GPS latitude and longitude: used for emulation of GPS input in debug mode  (suggested analog sources elevator and rudder), not mandatory
+- "GPS F3X Tracker" widget configuration:
+        - Start race switch: any 2-position switch or functional switch, mandatory
+        - Elevator output channel: mandatory only for FrSky GPS, used for simulation of accelerometer
+        - Input debug GPS latitude and longitude: used for emulation of GPS input in debug mode  (suggested analog sources elevator and rudder), not mandatory
 
 <picture 4>
 
