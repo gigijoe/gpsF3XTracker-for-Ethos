@@ -1,4 +1,4 @@
-# GPS F3X Tracker for Ethos Version 1.0
+# GPS F3X Tracker for Ethos Version 1.0 - NOTHING has been tested in real till now!
 
 ### Installation guide and user manual
 
