@@ -101,7 +101,7 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 
 <a name="Locations.lua"></a>
 ## 6. Locations.lua
-	File Locations.lua, located in "/scripts/gpstrack/gpstrack" folder, keeps event location items in the format  Name of event site, home latitude, home longitude, course direction, event type . Event types are:
+File Locations.lua, located in "/scripts/gpstrack/gpstrack" folder, keeps event location items in the format  Name of event site, home latitude, home longitude, course direction, event type . Event types are:
 -- type 1: f3f training 
 -- type 2: f3f competition
 -- type 3: f3b distance
