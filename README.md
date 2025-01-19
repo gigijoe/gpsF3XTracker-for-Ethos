@@ -66,12 +66,12 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 
 - "GPS F3X Tracker Setup" widget configuration:
 	- Event place: any item from list of places in locations.lua file
-	- Course direction: course bearing from the left base to the right base in degrees*
-	- Competition type: any type from supported types (f3f_training, f3f_competition, f3b_distance, f3b_speed, f3f_debug)*
-	- Base A is on left: set  true  if it is so (default status)**
+	- Course direction: course bearing from the left base to the right base in degrees 1)
+	- Competition type: any type from supported types (f3f_training, f3f_competition, f3b_distance, f3b_speed, f3f_debug) 1)
+	- Base A is on left: set  true  if it is so (default status) 2)
 	- Lock GPS Home position switch: any 2-position switch or functional switch, mandatory
-* These items are available only for "Live Position & Direction event", otherwise are locked as they are determined by event information from locations.lua file
-** This item is available only for F3F event types, for F3B event types is Base A always on left
+1) These items are available only for "Live Position & Direction event", otherwise are locked as they are determined by event information from locations.lua file
+2) This item is available only for F3F event types, for F3B event types is Base A always on left
 
 <picture 3>
 
@@ -193,11 +193,11 @@ Announcements and sounds:
 
 <a name="Developmentplan"></a>
 ## 9. Development plan
-	The application hasn t been thoroughly tested and it is highly probable there will be necessary to change or enhance some parts. Do not hesitate to comment and come with ideas. At this moment we plan:
-    a) Enhance of application by a simple editor of locations
-    b) Implement possibility to change course length of competition event to support individual local event scenario
-    c) Implement position estimation function, if tests will show it is needed
-    d) Join both application parts (setup and main) into one
+The application hasn't been thoroughly tested and it is highly probable there will be necessary to change or enhance some parts. Do not hesitate to comment and come with ideas. At this moment we plan:
+- Enhance of application by a simple editor of locations
+- Implement possibility to change course length of competition event to support individual local event scenario
+- Implement position estimation function, if tests will show it is needed
+- Merge both application parts (setup and main) into one
 
 <a name="License"></a>
 ## 10. License
