@@ -64,14 +64,14 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 	- FrSky GPS ADV:  "GPS Alt", "GPS", "GPS Speed", "GPS Clock"
 	- Other GPS: "GAlt", "GPS", "GSpd", "Date", "AccX", "AccY", "AccZ"
 
-- GPS F3X Tracker Setup  widget configuration:
+- "GPS F3X Tracker Setup" widget configuration:
 	- Event place: any item from list of places in locations.lua file
 	- Course direction: course bearing from the left base to the right base in degrees*
 	- Competition type: any type from supported types (f3f_training, f3f_competition, f3b_distance, f3b_speed, f3f_debug)*
 	- Base A is on left: set  true  if it is so (default status)**
 	- Lock GPS Home position switch: any 2-position switch or functional switch, mandatory
-	* These items are available only for  Live Position & Direction event , otherwise are locked as they are determined by event information from locations.lua file
-	** This item is available only for F3F event types, for F3B event types is Base A always on left
+* These items are available only for "Live Position & Direction event", otherwise are locked as they are determined by event information from locations.lua file
+** This item is available only for F3F event types, for F3B event types is Base A always on left
 
 <picture 3>
 
@@ -108,7 +108,7 @@ File Locations.lua, located in "/scripts/gpstrack/gpstrack" folder, keeps event 
 - type 4: f3b speed
 - type 5: f3f debug
 
-Default Location.lua looks like below. You can edit it as per your needs, but please do not delete the first row, which defines  live  not defined event site. Default event type in such case is f3f training (type 1), however you can change it during configuration. Home position is defined from current GPS information:
+Default Location.lua looks like below. You can edit it as per your needs, but please do not delete the first row, which defines "live" event not defined exactly in the Locations.lua. Default event type in such case is f3f training (type 1), however you can change it during configuration. Home position is defined from current GPS information:
 
     {name = '"Live" Position & Direction', lat = 0.0, lon = 0.0, dir = 0.0, comp = 1},
     {name = "Parkplatz", lat=53.550707, lon=9.923472,dir = 9,0, comp = 5},
@@ -129,14 +129,14 @@ Notes:
 The application supports F3F-competition, F3F-training, F3F-debug, F3B-speed and F3B-distance event types. They behave differently as below:
 - F3F-competition: it follows F3F rules, so it begins with 30 sec timer and starts the run timer when the plane enters the competition place from outside via base A toward base B for the fist time or when the initial timer expires. It then measures time for 10 laps between bases
 - F3F-training: it does not use the 30 sec and starts directly with entering the competition place from outside via base A toward base B for the fist time
-- F3F-debug: similar to F3F-training, however it uses emulation of GPS input (via configured sources  Input debug GPS latitude and longitude ) for simulation of flight around the set home position
+- F3F-debug: similar to F3F-training, however it uses emulation of GPS input (via configured sources "Input debug GPS latitude and longitude") for simulation of flight around the set home position
 - F3B-speed: at this moment only measures time for 4 laps since entering the competition place from outside via base A toward base B for the fist time. No check for the overall competition time is implemented
 - F3B-distance: it measures number of laps made in 4 minutes since entering the competition place from outside via base A toward base B for the fist time 
 
 The actual status is indicated by individual rows in the "GPS F3X Tracker" widget screen:
-- Comp:  waiting for start  , "started " - just after switching the  Start race switch  on, "canceled " - cancellation can be done by switching off/on/off of the  Start race switch , "start climbing " - during initial event phase (so 30 sec max), "out of course"   plane between bases, "race timer started " - initial 30 sec expired and plane between bases, "in course "   plane outside of bases, "timer started " - initial 30 sec expired and plane  outside of bases
+- Comp: "waiting for start...", "started..." - just after switching the "Start race switch" on, "canceled..." - cancellation can be done by switching off/on/off of the "Start race switch", "start climbing..." - during initial event phase (so 30 sec max), "out of course" - plane between bases, "race timer started..." - initial 30 sec expired and plane between bases, "in course..." - plane outside of bases, "timer started..." - initial 30 sec expired and plane  outside of bases
 - Runtime: time used for individual event
-- Course: "center", "leftOutside", "leftInside", "rightOutside", "rightInside"   distance from the center is provided
+- Course: "center", "leftOutside", "leftInside", "rightOutside", "rightInside" - distance from the center is provided
 - V, Dst, H: speed, distance from the center and height
 - GPS: actual GPS position
 - Runs: list of events of the same type with their runtime
@@ -149,30 +149,30 @@ The actual status is indicated by individual rows in the "GPS F3X Tracker" widge
 
 
 Announcements and sounds: 
-	- Beep after switching the  Start race switch  on
-	- Initial F3F timer countdown announcements: 30, 20, 10, 5, 4, 3, 2, 1 sec
-	- F3B-distance timer countdown announcements: minutes and every 10 sec for last minute
-	- Beeps when crossing base, tone based on condition
-	- Lap time announcements on even laps for F3F-traning event type
-	- Overall runtime at event end for F3F-x event types
+- Beep after switching the "Start race switch" on
+- Initial F3F timer countdown announcements: 30, 20, 10, 5, 4, 3, 2, 1 sec
+- F3B-distance timer countdown announcements: minutes and every 10 sec for last minute
+- Beeps when crossing base, tone based on condition
+- Lap time announcements on even laps for F3F-traning event type
+- Overall runtime at event end for F3F-x event types
 
 <a name="Usageonaslope"></a>
 ## 8. Usage on a slope
-- Switch on RC system and give the GPS sensor enough time for initiation and satellite detection (it can take 30+ seconds)! Open  GPS F3X Tracker Setup  widget and select  Live Position & Direction event place  or any pre-configured place.
-- For F3F and  Live Position & Direction event place :
-	- Set  Competition type  and  Base A is on left  configuration items
+- Switch on RC system and give the GPS sensor enough time for initiation and satellite detection (it can take 30+ seconds)! Open  GPS F3X Tracker Setup  widget and select "Live Position & Direction event place" or any pre-configured place.
+- For F3F and "Live Position & Direction event place":
+	- Set "Competition type" and "Base A is on left" configuration items
 	- Go with your model to the center of the course
-	-Wait for stable information in the  GPS  row in the  GPS F3X Tracker Setup  widget screen
- 	- Take the cardinal direction from the left base perpendicular to the right base and set it to the  Course direction  item
-	- Lock the position with the  Lock GPS Home position switch    such status will be indicated by change of item name to  GPS Home lck 
+	- Wait for stable information in the "GPS" row in the "GPS F3X Tracker Setup" widget screen
+ 	- Take the cardinal direction from the left base perpendicular to the right base and set it to the "Course direction" item
+	- Lock the position with the "Lock GPS Home position switch" - such status will be indicated by change of item name to "GPS Home lck" 
 	- Now your flight configuration is ready, you do not start from the exact home place
 
-- For F3B and  Live Position & Direction event place :
-	- Set  Competition type  configuration item
+- For F3B and "Live Position & Direction event place":
+	- Set "Competition type" configuration item
 	- Go with your model to the baseline A of the course
-	- Wait for stable information in the  GPS  row in the  GPS F3X Tracker Setup  widget screen
-	- Take the cardinal direction from baseline A perpendicular to baseline B and set it to the  Course direction  item
-	- Lock the position with the  Lock GPS Home position switch    such status will be indicated by change of item name to  GPS Home lck 
+	- Wait for stable information in the "GPS" row in the "GPS F3X Tracker Setup" widget screen
+	- Take the cardinal direction from baseline A perpendicular to baseline B and set it to the "Course direction" item
+	- Lock the position with the "Lock GPS Home position switch" - such status will be indicated by change of item name to "GPS Home lck" 
 	- Now your flight configuration is ready
 
 - For other F3F/F3B event places (pre-configured in the Location.lua file):
