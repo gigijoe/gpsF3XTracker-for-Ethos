@@ -60,7 +60,7 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 <a name="Configuration"></a>
 ## 5. Configuration
 - GPS sensor: set data rate to 10Hz = 0.1s (or higher if possible). Crosscheck names of available GPS sensors and rename, if needed. The application expects these sensors:
- - SM-Modelbau GPS-Logger 3: "GAlt", "GPS", "GSpd", "Date", "GSats", "AccX", "AccY", "AccZ"
+	- SM-Modelbau GPS-Logger 3: "GAlt", "GPS", "GSpd", "Date", "GSats", "AccX", "AccY", "AccZ"
  - FrSky GPS ADV:  "GPS Alt", "GPS", "GPS Speed", "GPS Clock"
  - Other GPS: "GAlt", "GPS", "GSpd", "Date", "AccX", "AccY", "AccZ"
 
