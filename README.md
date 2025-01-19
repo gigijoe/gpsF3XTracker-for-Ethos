@@ -43,8 +43,10 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 Unzip the installation package and place all files into directory /SCRIPTS on your transmitter. Folders gpstraca (keeping setup part) and gpstrack (keeping operation part) should not be changed. Please note all modules, excluding locations.lua, are in the compiled form (*.luac).
 Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "GPS F3X Tracker" when a target model is selected. The application is capable to modify size of text to size of widget windows, however, for accommodation of all information properly it is recommended to use half screen for the setup widget and whole screen for main widget:
 
-<picture 1>
-<picture 2>
+<<img width="400" alt="image" src="https://github.com/user-attachments/assets/b51639a8-a0b6-4f8f-8c04-0a33e132f7bb" />
+>
+<<img width="398" alt="image" src="https://github.com/user-attachments/assets/459e9b80-937d-4d22-af5f-fd390c1269c2" />
+>
 
 
 
