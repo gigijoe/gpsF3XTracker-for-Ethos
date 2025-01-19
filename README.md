@@ -26,22 +26,22 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 
 <a name="Requirements"></a>
 ## 2. Requirements
-	a) GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended. FrSky GPS ADV lacks gyro
-	b) Ethos: versions 1.5.x and newer are supported
-	c) Transmitter: The application supports units with touchscreen resolution 800*480
+- GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended. FrSky GPS ADV lacks gyro
+- Ethos: versions 1.5.x and newer are supported
+- Transmitter: The application supports units with touchscreen resolution 800*480
 
 <a name="Knownlimitations"></a>
 ## 3. Known limitations
-    a) Due to accuracy of GPS sensors (e.g. FrSky GPS ADV has accuracy approx 2.5m CEP) and telemetry latency the turn signals are not 100% precise, but still give a good F3F-experience. Issue can be worse for F3B speed tasks
-    b) Sometimes there is a GPS-drift of given start point. In this case the whole course might drift to left or right some meters, because the turn positions are calculated in relation to the start point
-    c) File with list of event sites (locations.lua) can be edited only via an external editor
-    d) Max 15 event sites are supported
-    e) Application texts and menus are only in English. Speech announcements are given in language configured in the transmitter
+a) Due to accuracy of GPS sensors (e.g. FrSky GPS ADV has accuracy approx 2.5m CEP) and telemetry latency the turn signals are not 100% precise, but still give a good F3F-experience. Issue can be worse for F3B speed tasks
+b) Sometimes there is a GPS-drift of given start point. In this case the whole course might drift to left or right some meters, because the turn positions are calculated in relation to the start point
+c) File with list of event sites (locations.lua) can be edited only via an external editor
+d) Max 15 event sites are supported
+e) Application texts and menus are only in English. Speech announcements are given in language configured in the transmitter
 
 <a name="Installation"></a>
 ## 4. Installation
-	Unzip the installation package and place all files into directory /SCRIPTS on your transmitter. Folders gpstraca (keeping setup part) and gpstrack (keeping operation part) should not be changed. Please note all modules, excluding locations.lua, are in the compiled form (*.luac).
-	Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "GPS F3X Tracker" when a target model is selected. The application is capable to modify size of text to size of widget windows, however, for accommodation of all information properly it is recommended to use half screen for the setup widget and whole screen for main widget:
+Unzip the installation package and place all files into directory /SCRIPTS on your transmitter. Folders gpstraca (keeping setup part) and gpstrack (keeping operation part) should not be changed. Please note all modules, excluding locations.lua, are in the compiled form (*.luac).
+Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "GPS F3X Tracker" when a target model is selected. The application is capable to modify size of text to size of widget windows, however, for accommodation of all information properly it is recommended to use half screen for the setup widget and whole screen for main widget:
 
 <picture 1>
 <picture 2>
