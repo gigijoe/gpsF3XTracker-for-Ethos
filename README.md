@@ -26,9 +26,9 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 
 <a name="Requirements"></a>
 ## 2. Requirements
-    a) GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended. FrSky GPS ADV lacks gyro
-    b) Ethos: versions 1.5.x and newer are supported
-    c) Transmitter: The application supports units with touchscreen resolution 800*480
+	a) GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended. FrSky GPS ADV lacks gyro
+	b) Ethos: versions 1.5.x and newer are supported
+	c) Transmitter: The application supports units with touchscreen resolution 800*480
 
 <a name="Knownlimitations"></a>
 ## 3. Known limitations
