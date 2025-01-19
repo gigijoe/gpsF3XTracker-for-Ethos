@@ -32,11 +32,11 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 
 <a name="Knownlimitations"></a>
 ## 3. Known limitations
-a) Due to accuracy of GPS sensors (e.g. FrSky GPS ADV has accuracy approx 2.5m CEP) and telemetry latency the turn signals are not 100% precise, but still give a good F3F-experience. Issue can be worse for F3B speed tasks
-b) Sometimes there is a GPS-drift of given start point. In this case the whole course might drift to left or right some meters, because the turn positions are calculated in relation to the start point
-c) File with list of event sites (locations.lua) can be edited only via an external editor
-d) Max 15 event sites are supported
-e) Application texts and menus are only in English. Speech announcements are given in language configured in the transmitter
+- Due to accuracy of GPS sensors (e.g. FrSky GPS ADV has accuracy approx 2.5m CEP) and telemetry latency the turn signals are not 100% precise, but still give a good F3F-experience. Issue can be worse for F3B speed tasks
+- Sometimes there is a GPS-drift of given start point. In this case the whole course might drift to left or right some meters, because the turn positions are calculated in relation to the start point
+- File with list of event sites (locations.lua) can be edited only via an external editor
+- Max 15 event sites are supported
+- Application texts and menus are only in English. Speech announcements are given in language configured in the transmitter
 
 <a name="Installation"></a>
 ## 4. Installation
@@ -59,10 +59,10 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 
 <a name="Configuration"></a>
 ## 5. Configuration
-    a) GPS sensor: set data rate to 10Hz = 0.1s (or higher if possible). Crosscheck names of available GPS sensors and rename, if needed. The application expects these sensors:
-        1. SM-Modelbau GPS-Logger 3: "GAlt", "GPS", "GSpd", "Date", "GSats", "AccX", "AccY", "AccZ"
-        2. FrSky GPS ADV:  "GPS Alt", "GPS", "GPS Speed", "GPS Clock"
-        3. Other GPS: "GAlt", "GPS", "GSpd", "Date", "AccX", "AccY", "AccZ"
+- GPS sensor: set data rate to 10Hz = 0.1s (or higher if possible). Crosscheck names of available GPS sensors and rename, if needed. The application expects these sensors:
+ - SM-Modelbau GPS-Logger 3: "GAlt", "GPS", "GSpd", "Date", "GSats", "AccX", "AccY", "AccZ"
+ - FrSky GPS ADV:  "GPS Alt", "GPS", "GPS Speed", "GPS Clock"
+ - Other GPS: "GAlt", "GPS", "GSpd", "Date", "AccX", "AccY", "AccZ"
 
     b)  GPS F3X Tracker Setup  widget configuration:
         1. Event place: any item from list of places in locations.lua file
