@@ -1,4 +1,4 @@
-# GPS F3X Tracker for Ethos Version 1.0 - NOTHING has been tested in real till now!
+# GPS F3X Tracker for Ethos Version 1.1 - NOTHING has been tested in real till now!
 
 ### Installation guide and user manual
 
@@ -11,8 +11,9 @@
 6. [Locations.lua](#Locations.lua)
 7. [Event modes](#Eventmodes)
 8. [Usage on a slope](#Usageonaslope)
-9. [Development plan](#Developmentplan)
-10. [License](#License)
+9. [Change log](#Changelog)
+10. [Development plan](#Developmentplan)
+11. [License](#License)
 
 <a name="GeneralDescription"></a>
 ## 1. General Description
@@ -20,13 +21,13 @@ GPS F3X Tracker for Ethos is the LUA application for FrSky transmitters with Eth
 
 There are also two modes for F3B available, where in case of speed task the time for 4 legs is measured, in case of distance task number of legs done in allocated time is counted.
 
-The application is based on ideas of Frank Schreiber s F3F Tool for Jeti and on code of Alex Barnitzke s gpsF3XTracker for OpenTx. Its code is published under the MIT License.
+The application is based on ideas of Frank Schreiber's F3F Tool for Jeti and on code of Alex Barnitzke's gpsF3XTracker for OpenTx. Its code is published under the MIT License.
 
 This manual describes how to install, configure and use the GPS F3X Tracker.
 
 <a name="Requirements"></a>
 ## 2. Requirements
-- GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended. FrSky GPS ADV lacks gyro
+- GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended as FrSky GPS ADV lacks gyro
 - Ethos: versions 1.5.x and newer are supported
 - Transmitter: The application supports units with touchscreen resolution 800*480
 
@@ -35,21 +36,25 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 - Due to accuracy of GPS sensors (e.g. FrSky GPS ADV has accuracy approx 2.5m CEP) and telemetry latency the turn signals are not 100% precise, but still give a good F3F-experience. Issue can be worse for F3B speed tasks
 - Sometimes there is a GPS-drift of given start point. In this case the whole course might drift to left or right some meters, because the turn positions are calculated in relation to the start point
 - File with list of event sites (locations.lua) can be edited only via an external editor
-- Max 15 event sites are supported
+- Max 14 fully defined and one "live" event sites are supported
 - Application texts and menus are only in English. Speech announcements are given in language configured in the transmitter
+- Application is resource demanding. There should not be many widgets/system tools/task/sources running, otherwise operation accuracy of application can be compromised. It is valid also vice versa, so other applications can be affected by F3X Tracker
 
 <a name="Installation"></a>
 ## 4. Installation
 Unzip the installation package and place all files into directory /SCRIPTS on your transmitter. Folders gpstraca (keeping setup part) and gpstrack (keeping operation part) should not be changed. Please note all modules, excluding locations.lua, are in the compiled form (*.luac).
-Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "GPS F3X Tracker" when a target model is selected. The application is capable to modify size of text to size of widget windows, however, for accommodation of all information properly it is recommended to use half screen for the setup widget and whole screen for main widget:
+Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "GPS F3X Tracker" when a target model is selected. The application is capable to partly modify size of text to size of widget windows, however, for accommodation of all information properly it is recommended to use half wide screen for the setup widget and whole screen for main widget, or to use two half height / full wide layout for both setup and main widget (in such case widget titles should be swithced off):
 
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/64ebaf36-a21f-4c63-962b-e63933f32665" />
 
 <img width="398" alt="image" src="https://github.com/user-attachments/assets/02e3870f-98cc-4512-a125-16e9df2353d4" />
 
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/e4d8eca7-e725-4077-a29b-f2770170c97f" />
+
+
 <a name="Configuration"></a>
 ## 5. Configuration
-- GPS sensor: set data rate to 10Hz = 0.1s (or higher if possible). Crosscheck names of available GPS sensors and rename, if needed. The application expects these sensors:
+- GPS sensor: set data rate to 10Hz = 0.1s (or higher if possible). Crosscheck names of available GPS sensors and rename, if needed. The application generally expects sensors altitude, coordinates, speed, date, satellites, accelerations:
 	- SM-Modelbau GPS-Logger 3: "GAlt", "GPS", "GSpd", "Date", "GSats", "AccX", "AccY", "AccZ"
 	- FrSky GPS ADV:  "GPS Alt", "GPS", "GPS Speed", "GPS Clock"
 	- Other GPS: "GAlt", "GPS", "GSpd", "Date", "AccX", "AccY", "AccZ"
@@ -76,7 +81,7 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 
 <a name="Locations.lua"></a>
 ## 6. Locations.lua
-File Locations.lua, located in "/scripts/gpstrack/gpstrack" folder, keeps event location items in the format  Name of event site, home latitude, home longitude, course direction, event type . Event types are:
+File Locations.lua, located in "/scripts/gpstrack/gpstrack" folder, keeps event location items in the format "Name of event site, home latitude, home longitude, course direction, course length difference, event type". Event types are:
 - type 1: f3f training 
 - type 2: f3f competition
 - type 3: f3b distance
@@ -85,19 +90,19 @@ File Locations.lua, located in "/scripts/gpstrack/gpstrack" folder, keeps event 
 
 Default Location.lua looks like below. You can edit it as per your needs, but please do not delete the first row, which defines "live" event not defined exactly in the Locations.lua. Default event type in such case is f3f training (type 1), however you can change it during configuration. Home position is defined from current GPS information:
 
-    {name = '"Live" Position & Direction', lat = 0.0, lon = 0.0, dir = 0.0, comp = 1},
-    {name = "Parkplatz", lat=53.550707, lon=9.923472,dir = 9,0, comp = 5},
-    {name = "Loechle", lat = 47.701974, lon = 8.3558498, dir = 152.0, comp = 2},
-    {name = "Soenderborg", lat = 53.333333, lon = 51.987654, dir = 19.9, comp = 3},
-    {name = "Toftum Bjerge", lat = 56.5422283333, lon = 8.52163166667, dir = 244.0, comp = 1},
-    {name = "Last Entry", lat = 53.555555, lon = 51.987654, dir = 10.9, comp = 4}
+    {name = '"Live" Position & Direction', lat = 0.0, lon = 0.0, dir = 0.0, dif = 0, comp = 1},
+    {name = "Parkplatz", lat=53.550707, lon=9.923472,dir = 9.0, dif = 0, comp = 5},
+    {name = "Loechle", lat = 47.701974, lon = 8.3558498, dir = 152.0, dif = 0, comp = 2},
+    {name = "Soenderborg", lat = 53.333333, lon = 51.987654, dir = 19.9, dif = 0, comp = 3},
+    {name = "Toftum Bjerge", lat = 56.5422283333, lon = 8.52163166667, dir = 244.0, dif = 0, comp = 1},
+    {name = "Last Entry", lat = 53.555555, lon = 51.987654, dir = 10.9, dif = 0, comp = 4}
 
 At this moment you need to edit the file on a connected PC. Max 15 event sites are supported.
 
 Notes:
 - home latitude and longitude is for F3F events position of a center of the course
 - home latitude and longitude is for F3B events position of a baseline A of the course
-- course length of competition event types is defined as per F3X rules   F3F 100m and F3B 150m. F3F debug has its course length set to 30m.
+- course length of competition event types is defined as per F3X rules - F3F 100m and F3B 150m. F3F debug has its course length set to 30m. You can change this default course length for a particular event site via item "dif" if needed - course is longer when value is positive and course is shorter when value is negative
 
 <a name="Eventmodes"></a>
 ## 7. Event modes
@@ -155,16 +160,22 @@ Announcements and sounds:
 
 - Start new event with the "Start race switch"
 
+<a name="Changelog"></a>
+## 9. Change log
+V1.1:
+- List of locations in the file Locations.lua has been enhanced by item "dif", which modifies default course length (F3F 100m, F3B 150m), positive number: course is longer, negative number: course is shorter
+- Number of visible GPS satellites is available on “GPS F3X Tracker Setup” widget screen (only for SM-Modelbau GPS-Logger 3)
+- Error in timestamp function has been fixed
+
 <a name="Developmentplan"></a>
-## 9. Development plan
-The application hasn't been thoroughly tested and it is highly probable there will be necessary to change or enhance some parts. Do not hesitate to comment and come with ideas. At this moment we plan:
+## 10. Development plan
+The application hasn't been thoroughly tested so far and it is highly probable there will be necessary to change or enhance some parts. Do not hesitate to comment and come with ideas. At this moment we plan:
 - Enhance of application by a simple editor of locations
-- Implement possibility to change course length of competition event to support individual local event scenario
 - Implement position estimation function, if tests will show it is needed
 - Merge both application parts (setup and main) into one
 
 <a name="License"></a>
-## 10. License
+## 11. License
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
