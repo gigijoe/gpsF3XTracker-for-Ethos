@@ -28,7 +28,7 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 <a name="Requirements"></a>
 ## 2. Requirements
 - GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended as FrSky GPS ADV lacks gyro
-- Ethos: versions 1.5.x and newer are supported
+- Ethos: versions 1.5.x and newer are supported (excluding 1.6.0 which has bug in the GPS area!)
 - Transmitter: The application supports units with touchscreen resolution 800*480
 
 <a name="Knownlimitations"></a>
@@ -38,7 +38,7 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 - File with list of event sites (locations.lua) can be edited only via an external editor
 - Max 14 fully defined and one "live" event sites are supported
 - Application texts and menus are only in English. Speech announcements are given in language configured in the transmitter
-- Application is resource demanding. There should not be many widgets/system tools/task/sources running, otherwise operation accuracy of application can be compromised. It is valid also vice versa, so other applications can be affected by F3X Tracker
+- Application is resource demanding. There should not be many other widgets/system tools/task/sources running on transmitter, otherwise operation accuracy of application can be compromised. It is valid also vice versa, so other applications can be affected by F3X Tracker
 
 <a name="Installation"></a>
 ## 4. Installation
@@ -55,7 +55,7 @@ Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "G
 <a name="Configuration"></a>
 ## 5. Configuration
 - GPS sensor: set data rate to 10Hz = 0.1s (or higher if possible). Crosscheck names of available GPS sensors and rename, if needed. The application generally expects sensors altitude, coordinates, speed, date, satellites, accelerations:
-	- SM-Modelbau GPS-Logger 3: "GAlt", "GPS", "GSpd", "Date", "GSats", "AccX", "AccY", "AccZ"
+	- SM-Modelbau GPS-Logger 3: "GAlt", "GPS", "GSpd", "Date", "GSats" (default name is "0870"!), "AccX", "AccY", "AccZ"
 	- FrSky GPS ADV:  "GPS Alt", "GPS", "GPS Speed", "GPS Clock"
 	- Other GPS: "GAlt", "GPS", "GSpd", "Date", "AccX", "AccY", "AccZ"
 
