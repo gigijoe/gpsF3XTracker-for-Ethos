@@ -1,4 +1,4 @@
-# GPS F3X Tracker for Ethos Version 1.1 - NOTHING has been tested in real till now!
+# GPS F3X Tracker for Ethos Version 1.2 - NOTHING has been tested in real till now!
 
 ### Installation guide and user manual
 
@@ -28,7 +28,7 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 <a name="Requirements"></a>
 ## 2. Requirements
 - GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended as FrSky GPS ADV lacks gyro
-- Ethos: versions 1.5.x and newer are supported (excluding 1.6.0 which has bug in the GPS area!)
+- Ethos: versions 1.5.x and newer are supported (**excluding 1.6.0 which has bug in the GPS area!**)
 - Transmitter: The application supports units with touchscreen resolution 800*480
 
 <a name="Knownlimitations"></a>
@@ -43,13 +43,12 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 <a name="Installation"></a>
 ## 4. Installation
 Unzip the installation package and place all files into directory /SCRIPTS on your transmitter. Folders gpstraca (keeping setup part) and gpstrack (keeping operation part) should not be changed. Please note all modules, excluding locations.lua, are in the compiled form (*.luac).
-Start the transmitter and configure two widgets   "GPS F3X Tracker Setup" and "GPS F3X Tracker" when a target model is selected. The application is capable to partly modify size of text to size of widget windows, however, for accommodation of all information properly it is recommended to use half wide screen for the setup widget and whole screen for main widget, or to use two half height / full wide layout for both setup and main widget (in such case widget titles should be swithced off):
-
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/64ebaf36-a21f-4c63-962b-e63933f32665" />
-
-<img width="398" alt="image" src="https://github.com/user-attachments/assets/02e3870f-98cc-4512-a125-16e9df2353d4" />
+Start the transmitter and configure two widgets "GPS F3X Tracker Setup" and "GPS F3X Tracker" when a target model is selected. The application is capable to partly modify size of text to size of widget windows, however, for accommodation of all information properly it is recommended to use at least for example half height & full wide layout for both setup and main widget (in such case widget titles should be switched off), or full height & half wide layout:
 
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/e4d8eca7-e725-4077-a29b-f2770170c97f" />
+
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/8fbf9129-bfb1-431f-a6fb-604375786ba1" />
+
 
 
 <a name="Configuration"></a>
@@ -166,6 +165,8 @@ V1.1:
 - List of locations in the file Locations.lua has been enhanced by item "dif", which modifies default course length (F3F 100m, F3B 150m), positive number: course is longer, negative number: course is shorter
 - Number of visible GPS satellites is available on “GPS F3X Tracker Setup” widget screen (only for SM-Modelbau GPS-Logger 3)
 - Error in timestamp function has been fixed
+
+V1.2: improved management of fonts
 
 <a name="Developmentplan"></a>
 ## 10. Development plan
