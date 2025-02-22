@@ -1,4 +1,4 @@
-# GPS F3X Tracker for Ethos Version 1.2 - NOTHING has been tested in real till now!
+# GPS F3X Tracker for Ethos Version 1.3 - NOTHING has been tested in real till now!
 
 ### Installation guide and user manual
 
@@ -28,14 +28,14 @@ This manual describes how to install, configure and use the GPS F3X Tracker.
 <a name="Requirements"></a>
 ## 2. Requirements
 - GPS sensor: SM-Modelbau GPS-Logger 3, FrSky GPS ADV and generally any other GPS with 3-axes gyro and with data rate 10Hz are supported. The Logger 3 is strongly recommended as FrSky GPS ADV lacks gyro
-- Ethos: versions 1.5.x and newer are supported (**excluding 1.6.0 which has bug in the GPS area!**)
+- Ethos: versions 1.6.2 and newer are supported (previous versions have various issues in areas used by the appication)
 - Transmitter: The application supports units with touchscreen resolution 800*480
 
 <a name="Knownlimitations"></a>
 ## 3. Known limitations
 - Due to accuracy of GPS sensors (e.g. FrSky GPS ADV has accuracy approx 2.5m CEP) and telemetry latency the turn signals are not 100% precise, but still give a good F3F-experience. Issue can be worse for F3B speed tasks
 - Sometimes there is a GPS-drift of given start point. In this case the whole course might drift to left or right some meters, because the turn positions are calculated in relation to the start point
-- File with list of event sites (locations.lua) can be edited only via an external editor
+- The application supports GPS coordinates with 6 decimals (accuracy cca 10 cm)
 - Max 14 fully defined and one "live" event sites are supported
 - Application texts and menus are only in English. Speech announcements are given in language configured in the transmitter
 - Application is resource demanding. There should not be many other widgets/system tools/task/sources running on transmitter, otherwise operation accuracy of application can be compromised. It is valid also vice versa, so other applications can be affected by F3X Tracker
@@ -61,6 +61,7 @@ Start the transmitter and configure two widgets "GPS F3X Tracker Setup" and "GPS
 - "GPS F3X Tracker Setup" widget configuration:
 	- Event place: any item from list of places in locations.lua file
 	- Course direction: course bearing from the left base to the right base in degrees (*)
+	- Course difference: change of standard course length (*)
 	- Competition type: any type from supported types (f3f_training, f3f_competition, f3b_distance, f3b_speed, f3f_debug) (*)
 	- Base A is on left: set  true  if it is so (default status) (**)
 	- Lock GPS Home position switch: any 2-position switch or functional switch, mandatory
@@ -69,7 +70,7 @@ Start the transmitter and configure two widgets "GPS F3X Tracker Setup" and "GPS
 
 	(**) This item is available only for F3F event types, for F3B event types is Base A always on left
 
-<img width="393" alt="image" src="https://github.com/user-attachments/assets/a477bf41-c2ab-4e79-9695-c02d4b6663c3" />
+<img width="395" alt="image" src="https://github.com/user-attachments/assets/6cf638e7-4f24-420f-ba8c-5a5a99623477" />
 
 - "GPS F3X Tracker" widget configuration:
 	- Start race switch: any 2-position switch or functional switch, mandatory
@@ -87,21 +88,38 @@ File Locations.lua, located in "/scripts/gpstrack/gpstrack" folder, keeps event 
 - type 4: f3b speed
 - type 5: f3f debug
 
-Default Location.lua looks like below. You can edit it as per your needs, but please do not delete the first row, which defines "live" event not defined exactly in the Locations.lua. Default event type in such case is f3f training (type 1), however you can change it during configuration. Home position is defined from current GPS information:
+Default Location.lua looks like below. You can edit it as per your needs, but please do not delete the first row, which defines "live" event location. Default event type in such case is f3f training (type 1), however you can change it during configuration. Home position for “live” event location is defined from current GPS information. Please do not remove the last entry either (create new sites before that item) and keep its name "Last Entry". Max 15 event sites are supported:
 
-    {name = '"Live" Position & Direction', lat = 0.0, lon = 0.0, dir = 0.0, dif = 0, comp = 1},
-    {name = "Parkplatz", lat=53.550707, lon=9.923472,dir = 9.0, dif = 0, comp = 5},
-    {name = "Loechle", lat = 47.701974, lon = 8.3558498, dir = 152.0, dif = 0, comp = 2},
-    {name = "Soenderborg", lat = 53.333333, lon = 51.987654, dir = 19.9, dif = 0, comp = 3},
-    {name = "Toftum Bjerge", lat = 56.5422283333, lon = 8.52163166667, dir = 244.0, dif = 0, comp = 1},
-    {name = "Last Entry", lat = 53.555555, lon = 51.987654, dir = 10.9, dif = 0, comp = 4}
-
-At this moment you need to edit the file on a connected PC. Max 15 event sites are supported.
+    {name = "Live Position & Direction", lat = 0.0, lon = 0.0, dir = 0.0, dif = 0, comp = 1},
+    {name = "Debug", lat = 53.550707, lon = 9.923472,dir = 9.0, dif = 20, comp = 5},
+    {name = "Loechle", lat = 47.701974, lon = 8.3558498, dir = 152.0, dif = 10, comp = 2},
+    {name = "F3B Distance site", lat = 53.333333, lon = 51.987654, dir = 19.9, dif = 0, comp = 3},
+    {name = "Toftum Bjerge", lat = 56.542000, lon =  8.521000, dir = 244.0, dif = -7, comp = 1},
+    {name = "F3B Speed site", lat = 53.555555, lon = 51.987654, dir = 10.9, dif = 0, comp = 4},
+    {name = "Trutnov", lat = 51.234567, lon = 15.678901, dir =  10.0, dif = 40, comp = 2},
+    {name = "Test site", lat = 31.212000, lon = 121.400000, dir =   0.1, dif = 1, comp = 1},
+    {name = "Last Entry", lat = 0.0, lon = 0.0, dir = 0.0, dif = 0, comp = 1}
 
 Notes:
 - home latitude and longitude is for F3F events position of a center of the course
 - home latitude and longitude is for F3B events position of a baseline A of the course
 - course length of competition event types is defined as per F3X rules - F3F 100m and F3B 150m. F3F debug has its course length set to 30m. You can change this default course length for a particular event site via item "dif" if needed - course is longer when value is positive and course is shorter when value is negative
+
+You can edit the file on a PC or via embedded editor:
+
+<img width="396" alt="image" src="https://github.com/user-attachments/assets/4cc2ba3c-1c72-4042-ba66-a8a88256a971" />
+
+Use button “Edit event place” at the bottom of the site configuration screen to enter the editor. The original screen will be replaced by a new screen allowing editing of all parameters:
+
+<img width="396" alt="image" src="https://github.com/user-attachments/assets/c9244f6e-66f6-4ce4-acc4-27c22fc4f2e3" />
+
+Button “Save” saves modified site as below:
+    1. Creation of a new site from the “Live Position & Direction” event place – if list of sites is not full, new line with provided information will be created in the Locations table, just before the "Last Entry" line. Do not forget to change name of new event place. If list of sites is full, save operation will be refused and indicated by message "List of sites is full!"
+    2. Editing of an existing site – changed parameter(s) will be written into relevant site line in the Locations table 
+
+Editor can be closed by standard “back” widget Ethos button
+
+Note: deletion of site lines in the Locations table is possible only via PC
 
 <a name="Eventmodes"></a>
 ## 7. Event modes
@@ -167,13 +185,12 @@ V1.1:
 - Error in timestamp function has been fixed
 
 V1.2: improved management of fonts
+V1.3: created function for editing location table in the locations.lua
 
 <a name="Developmentplan"></a>
 ## 10. Development plan
 The application hasn't been thoroughly tested so far and it is highly probable there will be necessary to change or enhance some parts. Do not hesitate to comment and come with ideas. At this moment we plan:
-- Enhance of application by a simple editor of locations
 - Implement position estimation function, if tests will show it is needed
-- Merge both application parts (setup and main) into one
 
 <a name="License"></a>
 ## 11. License
