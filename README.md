@@ -185,6 +185,7 @@ V1.1:
 - Error in timestamp function has been fixed
 
 V1.2: improved management of fonts
+
 V1.3: created function for editing location table in the locations.lua
 
 <a name="Developmentplan"></a>
