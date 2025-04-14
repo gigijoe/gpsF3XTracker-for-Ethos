@@ -108,7 +108,7 @@ local function reloadCompetition()
     global_has_changed = false      
     gpsOK = false                                           -- inactivate background process 
     
-    local file_name = 'f3f.luac'                            -- set some useful default values (just in case ...)
+    local file_name = 'f3f.lua'                            -- set some useful default values (just in case ...)
     local mode = 'training'
     length = 50
     local entry = getCompEntry(global_comp_type)            -- get competition infomation
@@ -180,12 +180,12 @@ local function wakeup(widget)
       global_baseA_left = true
       global_home_dir = 9.0
       global_home_pos = { lat=53.550707, lon=9.923472 }
-      comp = mydofile(basePath..'f3f.luac')
+      comp = mydofile(basePath..'f3f.lua')
       comp.init('training', global_baseA_left)              -- initialize event values  
       course.init(10, math.rad(global_home_dir), comp)      -- setup course (debug)
     end
     
-    sensor = mydofile(basePath..'sensors.luac')             -- load sensor library, it must be placed here as sensors are not ready when init() is running!
+    sensor = mydofile(basePath..'sensors.lua')             -- load sensor library, it must be placed here as sensors are not ready when init() is running!
     gpsOK = sensor.init(global_gps_type)                    -- initialize configured GPS sensor
     first_run = false
   end
@@ -371,9 +371,9 @@ local function init()
     end  
   end
 
-  gps = mydofile(basePath..'gpslib.luac')                    -- load gps library
-  screen = mydofile(basePath..'screen.luac')                 -- load screen library
-  course = mydofile(basePath..'course.luac')                 -- load course library
+  gps = mydofile(basePath..'gpslib.lua')                    -- load gps library
+  screen = mydofile(basePath..'screen.lua')                 -- load screen library
+  course = mydofile(basePath..'course.lua')                 -- load course library
 end
 
 return {init=init}

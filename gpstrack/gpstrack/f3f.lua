@@ -22,7 +22,7 @@ Change log:
 - v1.3: - some small optimizations
 ################################################################################]]
 
-local comp = {name='f3f.luac', baseAleft=true, mode='training', trainig=true, state=0, groundHeight=0., runtime=0, message='---'}
+local comp = {name='f3f.lua', baseAleft=true, mode='training', trainig=true, state=0, groundHeight=0., runtime=0, message='---'}
 
 function comp.init(mode, startLeft)                         -- initialize event values
   if mode == 'training' then

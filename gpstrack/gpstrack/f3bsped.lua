@@ -18,7 +18,7 @@ state:
 functions: ---------------------------------------------------------------------
 ################################################################################]]
 
-local comp = {name='f3bsped.luac', baseAleft=true, mode='training', trainig=true, state=0, groundHeight=0., lastHeight=0., runtime=0, message='---'}
+local comp = {name='f3bsped.lua', baseAleft=true, mode='training', trainig=true, state=0, groundHeight=0., lastHeight=0., runtime=0, message='---'}
 
 function comp.init(mode, startLeft)
     comp.training = false -- not needed

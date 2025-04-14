@@ -50,11 +50,11 @@ global_baseA_left = true                                    -- default place of 
 global_has_changed = false                                  -- indicator of change in any event parameter
 global_comp_type = 'f3f_trai'                               -- default
 global_comp_types = {
-    {name='f3f_trai', default_mode='training', course_length=100, file='f3f.luac' },
-    {name='f3f', default_mode='competition', course_length=100, file='f3f.luac' },
-    {name='f3b_dist', default_mode='competition', course_length=150, file='f3bdist.luac' },
-    {name='f3b_sped', default_mode='competition', course_length=150, file='f3bsped.luac' },
-    {name='f3f_debug', default_mode='training', course_length=30, file='f3f.luac' }
+    {name='f3f_trai', default_mode='training', course_length=100, file='f3f.lua' },
+    {name='f3f', default_mode='competition', course_length=100, file='f3f.lua' },
+    {name='f3b_dist', default_mode='competition', course_length=150, file='f3bdist.lua' },
+    {name='f3b_sped', default_mode='competition', course_length=150, file='f3bsped.lua' },
+    {name='f3f_debug', default_mode='training', course_length=30, file='f3f.lua' }
 }
 global_course_dif = 0                                       -- default course length is taken from the global_comp_types table, dif item in the locations table gives +- difference
 -- global_gps_type = 'SM Modelbau Logger3'                     -- default type of GPS sensor
@@ -409,7 +409,7 @@ local function init()
     system.registerWidget({key="Gpstset", name="GPS F3X Tracker Setup", create=create, paint=paint, configure=configure, wakeup=wakeup, read=read, write=write})
 
     locations = mydofile(basePath..'locations.lua')         -- load locations table module 
-    screen = mydofile(basePath..'screen.luac')              -- load screen module
+    screen = mydofile(basePath..'screen.lua')              -- load screen module
 
     loc2cb(locations)                                       -- extract information from locations.locations table to locations_choice table
 end
