@@ -1,5 +1,10 @@
 # GPS F3X Tracker for Ethos Version 1.3 - NOTHING has been tested in real till now!
 
+### Support RCGPS-F3x
+
+Tested with FrSky X20 pro
+Copy gpstrack & setup folder to transmitter $RADIO/script/
+
 ### Installation guide and user manual
 
 ## Contents
