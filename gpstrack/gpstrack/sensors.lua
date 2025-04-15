@@ -53,11 +53,11 @@ data.gpsV2 = {
 }
 -- RCGPS-F3x
 data.rcgpsF3x = {
-    gpsAlt   = {name = "Alt", id = 0, factor = 1.0},
+    gpsAlt   = {name = "GPS Alt", id = 0, factor = 1.0},
     gpsCoord = {name = "GPS", id = 0},
-    gpsSpeed = {name = "GSpd", id = 0, factor = 1.0},
+    gpsSpeed = {name = "GPS Speed", id = 0, factor = 1.0},
     -- gpsDate = {name = "Date", id = 0},
-    addEle = {name = "ele", id = 0}
+    -- addEle = {name = "ele", id = 0}
 }
 -- debugging
 data.testUnit = {
@@ -161,7 +161,7 @@ function sensor.init(name)                                  -- setup the telemet
     sensor.az = sensor.az_sim
     result = sensor.initializeSensor(data.gpsV2)
   elseif sensor.name == 'RCGPS-F3x' then
-    sensor.az = saz_zero
+    sensor.az = sensor.az_zero
     result = sensor.initializeSensor(data.rcgpsF3x)
   elseif sensor.name == 'Any other GPS with Gyro' then
     result = sensor.initializeSensor(data.gps_with_gyro)
