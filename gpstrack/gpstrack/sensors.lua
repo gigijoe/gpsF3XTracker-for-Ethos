@@ -53,9 +53,9 @@ data.gpsV2 = {
 }
 -- RCGPS-F3x
 data.rcgpsF3x = {
-    gpsAlt   = {name = "GPS Alt", id = 0, factor = 1.0},
+    gpsAlt   = {name = "GPS Alt", id = 0, factor = 0.01}, -- cm to m
     gpsCoord = {name = "GPS", id = 0},
-    gpsSpeed = {name = "GPS Speed", id = 0, factor = 1.0},
+    gpsSpeed = {name = "GPS Speed", id = 0, factor = 0.00051444},  -- sensor must give m/s! (1000 * knots to m/s)
     -- gpsDate = {name = "Date", id = 0},
     -- addEle = {name = "ele", id = 0}
 }

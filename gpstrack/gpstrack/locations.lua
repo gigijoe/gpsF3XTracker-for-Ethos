@@ -20,6 +20,9 @@ Change log:
 ]]
 local locations = {
     {name = "Live Position & Direction", lat = 0.0, lon = 0.0, dir = 0.0, dif = 0, comp = 1},
+    {name = "Iron mointain TW", lat = 24.3553370, lon = 120.6427390, dir = 309.0, dif = 0, comp = 1},
+    {name = "Houlong TW", lat = 24.6002242, lon = 120.8005573, dir = 115.0, dif = 0, comp = 1},
+    {name = "Longtan TW", lat = 24.8693506, lon = 121.1823482, dir = 120.0, dif = 0, comp = 1},
     {name = "Debug", lat = 53.550707, lon = 9.923472,dir = 9.0, dif = 20, comp = 5},
     {name = "Loechle", lat = 47.701974, lon = 8.3558498, dir = 152.0, dif = 10, comp = 2},
     {name = "F3B Distance site", lat = 53.333333, lon = 51.987654, dir = 19.9, dif = 0, comp = 3},
