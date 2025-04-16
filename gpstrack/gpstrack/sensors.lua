@@ -17,13 +17,13 @@ local data = {}
 -- GPS-Logger3 from SM Modelbau with factory defaults
 data.logger3 = {
 --    baroAlt  = {name = "Alt", id = 0, factor = 1.0},
-    gpsAlt   = {name = "GAlt", id = 0, factor = 1.0},
+    gpsAlt   = {name = "Altitude", id = 0, factor = 1.0},
     gpsCoord = {name = "GPS", id = 0},  
-    gpsSpeed = {name = "GSpd", id = 0, factor = 1.0/3.6},   -- SM modellbau gives km/h by default, we need m/s
+    gpsSpeed = {name = "VSpeed", id = 0, factor = 1.0/3.6},   -- SM modellbau gives km/h by default, we need m/s
     gpsDate = {name = "Date", id = 0},
 --    gpsDist = {name = "0860", id = 0, factor = 1.0},
 --    gpsSats = {name = "0870", id = 0, factor = 1.0},
-    gpsSats = {name = "GSats", id = 0, factor = 1.0},
+    gpsSats = {name = "GSAT", id = 0, factor = 1.0},
 --    gpsClimb = {name = "0880", id = 0, factor = 1.0},
 --    gpsDir = {name = "0890", id = 0},
 --    gpsRelDir = {name = "08A0", id = 0},
