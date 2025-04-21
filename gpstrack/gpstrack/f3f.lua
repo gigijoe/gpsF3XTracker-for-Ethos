@@ -92,14 +92,17 @@ function comp.start()                                       -- reset all values 
     
   if comp.state == 1 then
      comp.message = "started..."
+     --[[
      if comp.training then
        comp.state = 15
      else
        comp.state = 5
      end
+     ]]--   
+    comp.state = 5
   else
-     comp.message = "canceled..."
-     comp.state = 0
+    comp.message = "canceled..."
+    comp.state = 0
   end
 end
 
@@ -107,6 +110,7 @@ local lapTimeOdd = 0
 function comp.lapPassed(lap, laptime)                       -- messages on base
   comp.message = string.format("lap %d: %5.2fs", lap, laptime/1000.)
   system.playNumber(lap)
+--[[  
   if comp.training then                                   -- My friend Markus Meissner wants to have time only on even laps
     if lap % 2 == 0 then
       laptime = laptime + lapTimeOdd
@@ -115,6 +119,7 @@ function comp.lapPassed(lap, laptime)                       -- messages on base
       lapTimeOdd = laptime                                  -- store laptime on odd lap
     end
   end
+]]--
 end
 -------------------------------------------------------
 -- function comp.update - Update Competition Status Machine
@@ -226,7 +231,12 @@ function comp.update(height)
     comp.runtime = getETime() - comp.startTime_ms           -- working time... 
     if comp.rightBaseOut  > 0 then                          -- RIGHT BASE
       local laptime = comp.rightBaseOut - comp.lastLap
-      system.playTone(1200,300)
+      -- system.playTone(1200,300)
+      if comp.lap == 9 then
+        playTone(800,300,0,PLAY_NOW)
+      else
+        playTone(1000,600,0,PLAY_NOW)
+      end
       comp.lastLap = comp.rightBaseOut
       comp.cleanbases()
       if comp.lap > 9 then
@@ -245,7 +255,12 @@ function comp.update(height)
     comp.runtime = getETime() - comp.startTime_ms           -- working time...
     if comp.leftBaseOut > 0 then                            -- LEFT BASE
       local laptime = comp.leftBaseOut - comp.lastLap
-      system.playTone(1200,300)
+      -- system.playTone(1200,300)
+      if comp.lap == 9 then
+        playTone(800,300,0,PLAY_NOW)
+      else
+        playTone(1000,600,0,PLAY_NOW)
+      end
       comp.lastLap = comp.leftBaseOut
       comp.cleanbases()
       if comp.lap > 9 then
