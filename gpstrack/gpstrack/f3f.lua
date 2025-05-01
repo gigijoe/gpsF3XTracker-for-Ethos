@@ -233,9 +233,9 @@ function comp.update(height)
       local laptime = comp.rightBaseOut - comp.lastLap
       -- system.playTone(1200,300)
       if comp.lap == 9 then
-        playTone(800,300,0,PLAY_NOW)
+        system.playTone(800,300)
       else
-        playTone(1000,600,0,PLAY_NOW)
+        system.playTone(1000,600)
       end
       comp.lastLap = comp.rightBaseOut
       comp.cleanbases()
@@ -257,9 +257,9 @@ function comp.update(height)
       local laptime = comp.leftBaseOut - comp.lastLap
       -- system.playTone(1200,300)
       if comp.lap == 9 then
-        playTone(800,300,0,PLAY_NOW)
+        system.playTone(800,300)
       else
-        playTone(1000,600,0,PLAY_NOW)
+        system.playTone(1000,600)
       end
       comp.lastLap = comp.leftBaseOut
       comp.cleanbases()
