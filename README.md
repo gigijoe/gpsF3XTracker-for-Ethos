@@ -2,8 +2,8 @@
 
 ### Support RCGPS-F3x
 
-Tested with FrSky X20 pro
-Copy gpstrack & gpstraca folder to transmitter $RADIO/script/
+- Tested with FrSky X20 pro
+- Copy gpstrack & gpstraca folder to transmitter $RADIO/script/
 
 ### Installation guide and user manual
 
