@@ -51,8 +51,8 @@ function comp.init(mode, startLeft)                         -- initialize event 
 end
 
 function comp.countdown(elapsed_milliseconds)               -- play countdown messages
-  local milliseconds = 30500 - elapsed_milliseconds
-  local seconds = math.floor(milliseconds / 1000)
+  local milliseconds = 30000 - elapsed_milliseconds
+  local seconds = math.floor(milliseconds / 1000) + 1
     
   if seconds >= 10 and seconds % 10 == 0 then 
     if not comp.played[seconds] then
@@ -60,12 +60,13 @@ function comp.countdown(elapsed_milliseconds)               -- play countdown me
       comp.played[seconds] = true
     end
   end
-  if seconds > 0 and seconds <= 5 then
+  if seconds >= 0 and seconds <= 10 then
     if not comp.played[seconds] then
       system.playNumber(seconds)
       comp.played[seconds] = true
     end
   end
+  comp.runtime = milliseconds
 end
  
 function comp.cleanbases()                                  -- prepare all bases for next timing event
