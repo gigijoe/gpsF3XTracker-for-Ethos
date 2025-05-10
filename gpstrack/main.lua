@@ -73,7 +73,7 @@ end
 -- create function
 -------------------------------------------------------------------------
 local function create()
-  return {startSwitchId=nil, debug_lat=nil, debug_lon=nil}
+  return {startSwitchId=nil, centerOffsetSliderId=nil, debug_lat=nil, debug_lon=nil}
 end
 -------------------------------------------------------------------------------------------------
 -- get one full entry from supported competition types {name, default_mode, course_length, file}
@@ -190,6 +190,25 @@ local function wakeup(widget)
     first_run = false
   end
   
+  local offset = widget.centerOffsetSliderId:value()
+---[[
+  local val = offset / 20.
+  if val > 50 then
+    val = 50
+  elseif val < -50 then
+    val = -50
+  end
+--]]--
+--[[
+  local val = offset / 5.
+  if val > 200 then
+    val = 200
+  elseif val < -200 then
+    val = -200
+  end
+]]-- 
+  course.centerOffset = val  
+
   if global_has_changed then                                -- event parameter(s) has changed -> load a new competition
     reloadCompetition()
   end
@@ -307,6 +326,7 @@ local function paint(widget)
         screen.text(6, "GPS: waiting for lat & lon infomation...")
     end    
   end
+  screen.text(7, string.format("Center Offset: %-7.2f m", course.centerOffset))
 end
 -------------------------------------------------------------------------
 -- configure function
@@ -326,6 +346,9 @@ local function configure(widget)
 	line = form.addLine ("Start race switch")	                -- Start race Switch field
 	form.addSourceField (line, nil, function() return widget.startSwitchId end, function(value) widget.startSwitchId = value end)
 
+  line = form.addLine ("Center offset slider")                 -- Start race Switch field
+  form.addSourceField (line, nil, function() return widget.centerOffsetSliderId end, function(value) widget.centerOffsetSliderId = value end)
+
   line = form.addLine("Elevator channel")                   -- Elevator channel Source field - used in sensor.az_sim() function, mandatory only if GPS Logger3 from SM Modelbau is not used
   form.addSourceField(line, form.getFieldSlots(line)[0], function() return global_Ele_channel end, function(value) global_Ele_channel = value end)
   
@@ -338,6 +361,7 @@ end
 
 local function read(widget)
   widget.startSwitchId = storage.read("startSwitchId")
+  widget.centerOffsetSliderId = storage.read("centerOffsetSliderId")
   global_Ele_channel = storage.read("global_Ele_channel")
   debug_lat = storage.read("debug_lat")
   debug_lon = storage.read("debug_lon")
@@ -345,6 +369,7 @@ end
 
 local function write(widget)
   storage.write("startSwitchId", widget.startSwitchId)
+  storage.write("centerOffsetSliderId", widget.centerOffsetSliderId)
   storage.write("global_Ele_channel", global_Ele_channel)
   storage.write("debug_lat", debug_lat)
   storage.write("debug_lon", debug_lon)

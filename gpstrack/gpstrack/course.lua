@@ -53,6 +53,7 @@ function course.init(courseLength, courseDirection, competition)      -- initial
   course.useCorrection = false                              -- use the lookahead function  
 	course.correctionFactor = 0.1                             -- empiric value (F. Schreiber)
   course.text = ''
+  course.centerOffset = 0
 end
 
 function course.output(text)
@@ -72,7 +73,7 @@ function course.update(distance, bearing, groundspeed, acceleration)
     if deltaBearing < 0. then
       deltaBearing = 2*math.pi + deltaBearing
     end
-    course.Distance = distance * math.cos(deltaBearing)     -- calculate projection of flown distance into the course (no difference between course and flight means it is 1:1)
+    course.Distance = distance * math.cos(deltaBearing) + course.centerOffset     -- calculate projection of flown distance into the course (no difference between course and flight means it is 1:1)
     course.delta = course.Distance - course.lastDistance
     course.lastDistance = course.Distance                   -- save last valid gps status
     course.lastGroundSpeed = groundspeed
@@ -84,7 +85,7 @@ function course.update(distance, bearing, groundspeed, acceleration)
                                                             -- TODO: maybe there is a hysteresis needed. (start > 2;  end < 1)
     local dt = (timestamp - course.lastTimestamp) / 1000.0  -- delta t in seconds
     local w = 2*math.pi * az/course.lastGroundSpeed
-    course.delta = course.lastGroundSpeed * math.cos(w*dt)
+    course.delta = course.lastGroundSpeed * math.cos(w*dt) + course.centerOffset
     if course.lastDelta < 0 then                            -- continue in last valid direction
       course.delta = -course.delta 
     end
