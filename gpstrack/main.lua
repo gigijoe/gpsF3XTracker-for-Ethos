@@ -190,24 +190,26 @@ local function wakeup(widget)
     first_run = false
   end
   
-  local offset = widget.centerOffsetSliderId:value()
----[[
-  local val = offset / 20.
-  if val > 50 then
-    val = 50
-  elseif val < -50 then
-    val = -50
+  if widget.centerOffsetSliderId ~= nil then
+    local offset = widget.centerOffsetSliderId:value()
+  ---[[
+    local val = offset / 20.
+    if val > 50 then
+      val = 50
+    elseif val < -50 then
+      val = -50
+    end
+  --]]--
+  --[[
+    local val = offset / 5.
+    if val > 200 then
+      val = 200
+    elseif val < -200 then
+      val = -200
+    end
+  ]]-- 
+    course.centerOffset = val  
   end
---]]--
---[[
-  local val = offset / 5.
-  if val > 200 then
-    val = 200
-  elseif val < -200 then
-    val = -200
-  end
-]]-- 
-  course.centerOffset = val  
 
   if global_has_changed then                                -- event parameter(s) has changed -> load a new competition
     reloadCompetition()
